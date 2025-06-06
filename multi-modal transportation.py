@@ -71,7 +71,8 @@ class MMT:
 
         bigM = 100000
         route = route[route['Feasibility'] == 1]
-        route['Warehouse Cost'][route['Warehouse Cost'].isnull()] = bigM
+        # Fill missing warehouse cost values with bigM to keep infeasible routes expensive
+        route.loc[route['Warehouse Cost'].isnull(), 'Warehouse Cost'] = bigM
         route = route.reset_index()
 
         portSet = set(route['Source']) | set(route['Destination'])
@@ -82,7 +83,8 @@ class MMT:
 
         self.maxDate = np.max(order['Required Delivery Date'])
         self.minDate = np.min(order['Order Date'])
-        self.dateSpace = (self.maxDate - self.minDate).days
+        # include both start and end dates when calculating total days
+        self.dateSpace = (self.maxDate - self.minDate).days + 1
         startWeekday = self.minDate.weekday() + 1
         weekday = np.mod((np.arange(self.dateSpace) + startWeekday), 7)
         weekday[weekday == 0] = 7
