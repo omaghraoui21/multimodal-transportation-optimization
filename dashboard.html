@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tontine Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <h1>Tontine Dashboard</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contributions</a></li>
+        <li><a href="#">Members</a></li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="welcome">
+      <h2>Welcome back, <span id="user-name">Member</span>!</h2>
+      <p>Your next contribution is due on <span id="next-date">--/--/----</span>.</p>
+    </section>
+    <section class="cards">
+      <div class="card">
+        <h3>Total Contributions</h3>
+        <p id="total-amount">$0</p>
+      </div>
+      <div class="card">
+        <h3>Upcoming Rotations</h3>
+        <ul id="rotation-list"></ul>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
